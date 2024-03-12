@@ -74,5 +74,6 @@ hamlet_t.collocations(num=5) #слова які найчастіше зустр�
 
 fig_1 = plt.figure()
 plt.gcf().subplots_adjust(bottom=0.30) # to avoid x-ticks cut-off
+
 hamlet_t.dispersion_plot(['Lord', 'King', 'Hamlet'])
 plt.show()
