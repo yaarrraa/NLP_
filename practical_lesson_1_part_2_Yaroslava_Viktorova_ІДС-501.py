@@ -2,15 +2,17 @@ import nltk
 from nltk import sent_tokenize, word_tokenize
 from nltk.corpus import movie_reviews
 
-#Classifying Text
-tell_words = ['amazing', 'incredible', 'perfect', 'nice', 'fine', 'hilarious', 'excellent', 'awesome',  'good',
+# Classifying Text
+tell_words = ['amazing', 'incredible', 'perfect', 'nice', 'fine', 'hilarious', 'excellent', 'awesome', 'good',
               'wonderful', 'powerful', 'impressive', 'fantastic', 'funny', 'awful', 'horror', 'inspiring', 'memorable',
-              'mystery', 'successful','great', 'best', 'funny', 'interesting', 'bad', 'least', 'worst', 'long',
+              'successful', 'great', 'best', 'funny', 'interesting', 'bad', 'least', 'worst', 'long',
               'wrong', 'stupid', 'boring', 'predictable', 'terrible', 'scary', ]
 
 # Отримання списку файлів з позитивними та негативними рецензіями
 pos_fileids = movie_reviews.fileids('pos')
 neg_fileids = movie_reviews.fileids('neg')
+
+
 # Функція для отримання абзаців з рецензії
 def get_paragraphs(fileids):
     paragraphs = []
@@ -23,9 +25,12 @@ def get_paragraphs(fileids):
         paragraphs.append(sentences)
     return paragraphs
 
+
 # Отримання абзаців з позитивних та негативних рецензій
 pos_paragraphs = get_paragraphs(pos_fileids)
 neg_paragraphs = get_paragraphs(neg_fileids)
+
+
 # print(pos_paragraphs[:5])
 # print(len(pos_paragraphs))
 # print(len(neg_paragraphs))
@@ -33,11 +38,12 @@ neg_paragraphs = get_paragraphs(neg_fileids)
 def flatten(paragraph):
     output = set([])
     for item in paragraph:
-       if isinstance(item, (list, tuple)):
-           output.update(item)
-       else:
-           output.add(item)
+        if isinstance(item, (list, tuple)):
+            output.update(item)
+        else:
+            output.add(item)
     return output
+
 
 pos_flat = []
 for paragraph in pos_paragraphs:
@@ -55,6 +61,7 @@ for paragraph in neg_flat:
     labeled_data.append((paragraph, 'negative'))
 
 from random import shuffle
+
 shuffle(labeled_data)
 
 
@@ -63,6 +70,7 @@ def define_features(paragraph):
     for tell_word in tell_words:
         features[tell_word] = tell_word in paragraph
     return features
+
 
 feature_data = []
 for labeled_paragraph in labeled_data:
