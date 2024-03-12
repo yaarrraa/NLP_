@@ -3,12 +3,10 @@ from nltk import sent_tokenize, word_tokenize
 from nltk.corpus import movie_reviews
 
 #Classifying Text
-tell_words = ['amazing', 'incredible', 'perfect', 'nice', 'fine', 'hilarious', 'excellent',
-                  'awesome',  'good',  'wonderful', 'powerful', 'impressive',
-                  'fantastic', 'funny',
-                  'awful', 'horror', 'inspiring', 'memorable', 'mystery',  'successful',
-                  'great', 'best', 'funny', 'interesting', 'bad', 'least', 'worst', 'long', 'wrong', 'stupid', 'boring',
-              'predictable', 'terrible', 'scary', ]
+tell_words = ['amazing', 'incredible', 'perfect', 'nice', 'fine', 'hilarious', 'excellent', 'awesome',  'good',
+              'wonderful', 'powerful', 'impressive', 'fantastic', 'funny', 'awful', 'horror', 'inspiring', 'memorable',
+              'mystery', 'successful','great', 'best', 'funny', 'interesting', 'bad', 'least', 'worst', 'long',
+              'wrong', 'stupid', 'boring', 'predictable', 'terrible', 'scary', ]
 
 # Отримання списку файлів з позитивними та негативними рецензіями
 pos_fileids = movie_reviews.fileids('pos')
